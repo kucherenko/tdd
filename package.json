@@ -4,10 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "mocha -r tests/hooks.js -r ts-node/register tests/**/*.spec.ts",
-    "cov": "nyc mocha -r tests/hooks.js -r ts-node/register -r source-map-support/register tests/**/*.spec.ts"
+    "test": "mocha",
+    "cov": "nyc mocha",
+    "mut": "stryker run"
   },
   "devDependencies": {
+    "@stryker-mutator/core": "^4.5.1",
+    "@stryker-mutator/mocha-runner": "^4.5.1",
     "@types/chai": "^4.2.16",
     "@types/mocha": "^8.2.2",
     "@types/sinon-chai": "^3.2.5",
@@ -20,13 +23,24 @@
     "ts-sinon": "^2.0.1",
     "typescript": "^4.2.3"
   },
+  "mocha": {
+    "require": [
+      "tests/hooks.js",
+      "ts-node/register",
+      "source-map-support/register"
+    ],
+    "spec": [
+      "tests/**/*.spec.ts"
+    ]
+  },
   "nyc": {
     "extension": [
       ".ts",
       ".tsx"
     ],
     "exclude": [
-      "**/*.d.ts"
+      "**/*.d.ts",
+      "tests/**/*"
     ],
     "reporter": [
       "html"

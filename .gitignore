@@ -3,3 +3,7 @@ coverage
 .idea
 yarn-error.log
 node_modules
+
+# stryker temp files
+.stryker-tmp
+reports
