@@ -40,7 +40,9 @@
     ],
     "exclude": [
       "**/*.d.ts",
-      "tests/**/*"
+      "tests/**/*",
+      "coverage/**/*",
+      "stryker.conf.js"
     ],
     "reporter": [
       "html"
